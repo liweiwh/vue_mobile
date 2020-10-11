@@ -2,6 +2,7 @@
   <div id="app">
     <!-- 路由占位符 -->
     <router-view />
+    <div class="box"></div>
   </div>
 </template>
 
@@ -12,4 +13,9 @@ export default {
 </script>
 
 <style lang="scss">
+.box {
+  width: 375px;
+  height: 200px;
+  background-color: red;
+}
 </style>
