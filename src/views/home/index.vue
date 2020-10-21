@@ -15,7 +15,7 @@
     <van-tabs class="channel-tabs" v-model="active" animated swipeable>
       <van-tab :title="channel.name" v-for="channel in channels" :key="channel.id">
         <!-- 文章列表 -->
-        <!-- <article-list ref="article-list" :channel="channel" /> -->
+        <article-list ref="article-list" :channel="channel" />
         <!-- 文章列表 -->
       </van-tab>
       <div slot="nav-right" class="placeholder"></div>
@@ -29,10 +29,12 @@
 
 <script>
 import { getUserChannels } from '@/api/user'
+import ArticleList from './components/article-list'
 
 export default {
   name: 'HomeIndex',
   components: {
+    ArticleList
   },
   props: {},
   data () {
@@ -45,9 +47,6 @@ export default {
   watch: {},
   created () {
     this.loadChannels()
-  },
-  mounted () {
-    window.home = this
   },
   methods: {
     async loadChannels () {
