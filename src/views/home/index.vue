@@ -1,8 +1,15 @@
 <template>
   <div class="home-container">
     <!-- 导航栏 -->
-    <van-nav-bar class="page-nav-bar" fixed>
-      <van-button class="search-btn" slot="title" type="info" size="small" round icon="search" to="/search">搜索</van-button>
+    <van-nav-bar class="page-nav-bar"
+                 fixed>
+      <van-button class="search-btn"
+                  slot="title"
+                  type="info"
+                  size="small"
+                  round
+                  icon="search"
+                  to="/search">搜索</van-button>
     </van-nav-bar>
     <!-- /导航栏 -->
 
@@ -12,22 +19,37 @@
       通过 animated 属性可以开启切换标签内容时的转场动画
       通过 swipeable 属性可以开启滑动切换标签页
      -->
-    <van-tabs class="channel-tabs" v-model="active" animated swipeable>
-      <van-tab :title="channel.name" v-for="channel in channels" :key="channel.id">
+    <van-tabs class="channel-tabs"
+              v-model="active"
+              animated
+              swipeable>
+      <van-tab :title="channel.name"
+               v-for="channel in channels"
+               :key="channel.id">
         <!-- 文章列表 -->
-        <article-list ref="article-list" :channel="channel" />
+        <article-list ref="article-list"
+                      :channel="channel" />
         <!-- 文章列表 -->
       </van-tab>
-      <div slot="nav-right" class="placeholder"></div>
-      <div slot="nav-right" class="hamburger-btn" @click="isChennelEditShow = true">
+      <div slot="nav-right"
+           class="placeholder"></div>
+      <div slot="nav-right"
+           class="hamburger-btn"
+           @click="isChennelEditShow = true">
         <i class="toutiao toutiao-gengduo"></i>
       </div>
     </van-tabs>
     <!-- /频道列表 -->
 
     <!-- 频道编辑弹出层 -->
-    <van-popup v-model="isChennelEditShow" closeable close-icon-position="top-left" position="bottom" :style="{ height: '100%' }">
-      <channel-edit :my-channels="channels" :active="active" @update-active="onUpdateActive" />
+    <van-popup v-model="isChennelEditShow"
+               closeable
+               close-icon-position="top-left"
+               position="bottom"
+               :style="{ height: '100%' }">
+      <channel-edit :my-channels="channels"
+                    :active="active"
+                    @update-active="onUpdateActive" />
     </van-popup>
     <!-- /频道编辑弹出层 -->
   </div>
@@ -143,7 +165,7 @@ export default {
     }
 
     .van-tabs__nav {
-      padding-bottom: 0;
+      padding: 0;
     }
 
     .van-tabs__line {
