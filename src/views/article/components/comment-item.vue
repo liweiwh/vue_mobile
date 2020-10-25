@@ -1,18 +1,29 @@
 <template>
   <van-cell class="comment-item">
-    <van-image slot="icon" class="avatar" round fit="cover" :src="comment.aut_photo" />
-    <div slot="title" class="title-wrap">
+    <van-image slot="icon"
+               class="avatar"
+               round
+               fit="cover"
+               :src="comment.aut_photo" />
+    <div slot="title"
+         class="title-wrap">
       <div class="user-name">{{ comment.aut_name }}</div>
-      <van-button class="like-btn" :class="{
+      <van-button class="like-btn"
+                  :class="{
           liked: comment.is_liking
-        }" :icon="comment.is_liking ? 'good-job' : 'good-job-o'" :loading="commentLoading" @click="onCommentLike">{{ comment.like_count || '赞' }}</van-button>
+        }"
+                  :icon="comment.is_liking ? 'good-job' : 'good-job-o'"
+                  :loading="commentLoading"
+                  @click="onCommentLike">{{ comment.like_count || '赞' }}</van-button>
     </div>
 
     <div slot="label">
       <p class="comment-content">{{ comment.content }}</p>
       <div class="bottom-info">
         <span class="comment-pubdate">{{ comment.pubdate | relativeTime }}</span>
-        <van-button class="reply-btn" round>回复 {{ comment.reply_count }}</van-button>
+        <van-button class="reply-btn"
+                    round
+                    @click="$emit('reply-click', comment)">回复 {{ comment.reply_count }}</van-button>
       </div>
     </div>
   </van-cell>
@@ -94,7 +105,7 @@ export default {
     align-items: center;
   }
   .reply-btn {
-    width: 135px;
+    // width: 135px;
     height: 48px;
     line-height: 48px;
     font-size: 21px;
