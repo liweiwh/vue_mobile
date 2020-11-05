@@ -1,11 +1,21 @@
 <template>
   <div class="channel-edit">
     <van-cell :border="false">
-      <div slot="title" class="title-text">我的频道</div>
-      <van-button class="edit-btn" type="danger" plain round size="mini" @click="isEdit = !isEdit">{{ isEdit ? '完成' : '编辑' }}</van-button>
+      <div slot="title"
+           class="title-text">我的频道</div>
+      <van-button class="edit-btn"
+                  type="danger"
+                  plain
+                  round
+                  size="mini"
+                  @click="isEdit = !isEdit">{{ isEdit ? '完成' : '编辑' }}</van-button>
     </van-cell>
-    <van-grid class="my-grid" :gutter="10">
-      <van-grid-item class="grid-item" v-for="(channel, index) in myChannels" :key="index" @click="onMyChannelClick(channel, index)">
+    <van-grid class="my-grid"
+              :gutter="10">
+      <van-grid-item class="grid-item"
+                     v-for="(channel, index) in myChannels"
+                     :key="index"
+                     @click="onMyChannelClick(channel, index)">
         <!--
           v-bind:class 语法
           一个对象，对象中的 key 表示要作用的 CSS 类名
@@ -13,17 +23,28 @@
                       true，则作用该类名
                       false，不作用类名
          -->
-        <van-icon v-show="isEdit && !fiexdChannels.includes(channel.id)" slot="icon" name="clear"></van-icon>
-        <span class="text" :class="{ active: index === active }" slot="text">{{ channel.name }}</span>
+        <van-icon v-show="isEdit && !fixedChannels.includes(channel.id)"
+                  slot="icon"
+                  name="clear"></van-icon>
+        <span class="text"
+              :class="{ active: index === active }"
+              slot="text">{{ channel.name }}</span>
       </van-grid-item>
     </van-grid>
 
     <!-- 频道推荐 -->
     <van-cell :border="false">
-      <div slot="title" class="title-text">频道推荐</div>
+      <div slot="title"
+           class="title-text">频道推荐</div>
     </van-cell>
-    <van-grid class="recommend-grid" :gutter="10">
-      <van-grid-item class="grid-item" v-for="(channel, index) in recommendChannels" :key="index" icon="plus" :text="channel.name" @click="onAddChannel(channel)" />
+    <van-grid class="recommend-grid"
+              :gutter="10">
+      <van-grid-item class="grid-item"
+                     v-for="(channel, index) in recommendChannels"
+                     :key="index"
+                     icon="plus"
+                     :text="channel.name"
+                     @click="onAddChannel(channel)" />
     </van-grid>
     <!-- /频道推荐 -->
   </div>
@@ -55,7 +76,7 @@ export default {
     return {
       allChannels: [], // 所有频道
       isEdit: false, // 控制编辑状态的显示
-      fiexdChannels: [0] // 固定频道，不允许删除
+      fixedChannels: [0, 13] // 固定频道，不允许删除
     }
   },
   computed: {

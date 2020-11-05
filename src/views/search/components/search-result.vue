@@ -1,7 +1,14 @@
 <template>
   <div class="search-result">
-    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" :error.sync="error" error-text="加载失败，请点击重试" @load="onLoad">
-      <van-cell v-for="(article, index) in list" :key="index" :title="article.title" />
+    <van-list v-model="loading"
+              :finished="finished"
+              finished-text="没有更多了"
+              :error.sync="error"
+              error-text="加载失败，请点击重试"
+              @load="onLoad">
+      <van-cell v-for="(article, index) in list"
+                :key="index"
+                :title="article.title" />
     </van-list>
   </div>
 </template>
@@ -42,9 +49,9 @@ export default {
           q: this.searchText // 查询关键词
         })
 
-        if (Math.random() > 0.5) {
-          JSON.parse('dsnajndjsa')
-        }
+        // if (Math.random() > 0.5) {
+        //   JSON.parse('dsnajndjsa')
+        // }
 
         // 2. 将数据添加到数组列表中
         const { results } = data.data

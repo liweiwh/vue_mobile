@@ -1,7 +1,12 @@
 <template>
-  <van-button :icon="value === 1 ? 'good-job' : 'good-job-o'" :class="{
-      liked: value === 1
-    }" :loading="loading" @click="onCollect" />
+  <van-button
+    :icon="value === 1 ? 'good-job' : 'good-job-o'"
+    :class="{
+      liked: value === 1,
+    }"
+    :loading="loading"
+    @click="onCollect"
+  />
 </template>
 
 <script>
@@ -12,12 +17,10 @@ export default {
   components: {},
   props: {
     value: {
-      type: Number,
-      required: true
+      type: Number
     },
     articleId: {
-      type: [Number, String, Object],
-      required: true
+      type: [Number, String, Object]
     }
   },
   data () {
